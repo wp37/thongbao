@@ -43,7 +43,7 @@
         }
 
         body {
-            background: linear-gradient(-45deg, #e0e7ff, #c7d2fe, #f3e8ff, #eef2ff);
+            background: linear-gradient(-45deg, #2e1065, #4c1d95, #6b21a8, #3b0764);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: var(--text-main);
@@ -63,7 +63,7 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -241,10 +241,11 @@
         }
 
         .protocol-list li {
+            position: relative;
+            padding-left: 24px;
             margin-bottom: 12px;
             font-size: 15px;
             line-height: 1.6;
-            display: flex;
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -255,11 +256,13 @@
 
         .protocol-list li::before {
             content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
             color: var(--primary);
-            margin-right: 12px;
             font-weight: bold;
             font-size: 18px;
-            line-height: 1.2;
+            line-height: 1.6;
         }
 
         .highlight {
