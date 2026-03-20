@@ -24,15 +24,16 @@
     <!-- =========================================================== -->
 
     <!-- Import Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --yellow: #fcee0a;
-            --cyan: #00f3ff;
-            --pink: #ff003c;
-            --dark: #050505;
-            --darker: #020202;
-            --gray: #222;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary: #0ea5e9;
+            --danger: #ef4444;
+            --success: #10b981;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
         }
 
         * {
@@ -42,202 +43,197 @@
         }
 
         body {
-            background-color: var(--darker);
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            color: #fff;
-            font-family: 'Share Tech Mono', monospace;
+            background: linear-gradient(-45deg, #e0e7ff, #c7d2fe, #f3e8ff, #eef2ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Scanline effect */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
-            z-index: 100;
-            pointer-events: none;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .cyber-card {
-            background: var(--dark);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             width: 100%;
             max-width: 650px;
             position: relative;
-            padding: 30px;
-            border: 1px solid var(--gray);
-            border-left: 4px solid var(--cyan);
-            border-bottom: 4px solid var(--pink);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1), 0 0 40px rgba(255, 0, 60, 0.1);
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             z-index: 10;
         }
 
-        .cyber-card::before {
+        .glass-card::before {
             content: "MÃ BÀI: KT15P-L3";
             position: absolute;
-            top: 5px;
-            right: 15px;
-            font-size: 10px;
-            color: var(--gray);
-            letter-spacing: 2px;
+            top: 24px;
+            right: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            background: rgba(79, 70, 229, 0.1);
+            padding: 6px 12px;
+            border-radius: 12px;
         }
 
         .header {
             margin-bottom: 30px;
-            border-bottom: 2px dashed var(--gray);
-            padding-bottom: 15px;
+            border-bottom: 2px dashed rgba(0,0,0,0.08);
+            padding-bottom: 25px;
+            text-align: center;
         }
 
         .alert-badge {
             display: inline-block;
-            background: var(--pink);
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            padding: 5px 15px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            margin-bottom: 10px;
-            animation: blink 2s infinite;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            font-weight: 800;
+            padding: 6px 16px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .title {
-            font-family: 'Rajdhani', sans-serif;
             font-size: 32px;
-            font-weight: 700;
-            color: var(--cyan);
+            font-weight: 900;
+            color: var(--text-main);
             text-transform: uppercase;
-            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
-            line-height: 1.2;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
         }
 
         .timeline-box {
-            background: rgba(252, 238, 10, 0.1);
-            border-left: 4px solid var(--yellow);
-            padding: 15px;
-            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 5px solid var(--primary);
+            padding: 18px 24px;
+            margin-bottom: 30px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
 
         .timeline-label {
-            color: var(--yellow);
-            font-weight: bold;
+            color: var(--text-muted);
+            font-weight: 700;
             margin-right: 15px;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .timeline-value {
-            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
             font-size: 18px;
-            color: #fff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            color: var(--primary);
         }
 
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
-            color: var(--cyan);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
+            text-transform: uppercase;
         }
 
         .section-title::before {
             content: "";
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--cyan);
-            margin-right: 10px;
+            width: 8px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin-right: 12px;
+            border-radius: 4px;
         }
 
         .nodes-grid {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .cyber-btn {
+        .clean-btn {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: transparent;
-            border: 1px solid var(--cyan);
-            color: var(--cyan);
-            padding: 15px 20px;
-            font-family: 'Share Tech Mono', monospace;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.05);
+            color: var(--text-main);
+            padding: 18px 24px;
             font-size: 16px;
+            font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            cursor: pointer;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
-            cursor: pointer;
         }
 
-        .cyber-btn::before {
+        .clean-btn::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--cyan);
-            transition: all 0.3s ease;
-            z-index: -1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
         }
 
-        .cyber-btn:hover {
-            color: var(--darker);
-            font-weight: bold;
-            box-shadow: 0 0 15px var(--cyan);
+        .clean-btn:hover::after {
+            transform: translateX(100%);
         }
 
-        .cyber-btn:hover::before {
-            left: 0;
+        .clean-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
-        .cyber-btn.grade-8 {
-            border-color: var(--pink);
-            color: var(--pink);
-        }
-        .cyber-btn.grade-8::before { background: var(--pink); }
-        .cyber-btn.grade-8:hover { color: #fff; box-shadow: 0 0 15px var(--pink); }
+        .clean-btn.grade-7 { border-left: 5px solid #3b82f6; }
+        .clean-btn.grade-7:hover { color: #3b82f6; border-color: #3b82f6; }
 
-        .cyber-btn.grade-9 {
-            border-color: var(--yellow);
-            color: var(--yellow);
-        }
-        .cyber-btn.grade-9::before { background: var(--yellow); }
-        .cyber-btn.grade-9:hover { color: var(--darker); box-shadow: 0 0 15px var(--yellow); }
+        .clean-btn.grade-8 { border-left: 5px solid #10b981; }
+        .clean-btn.grade-8:hover { color: #10b981; border-color: #10b981; }
+
+        .clean-btn.grade-9 { border-left: 5px solid #8b5cf6; }
+        .clean-btn.grade-9:hover { color: #8b5cf6; border-color: #8b5cf6; }
 
         .btn-icon {
             font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .clean-btn:hover .btn-icon {
+            transform: translateX(5px);
         }
 
         .protocols {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--gray);
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
 
         .protocol-list {
@@ -245,109 +241,72 @@
         }
 
         .protocol-list li {
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
             display: flex;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .protocol-list li:last-child {
+            margin-bottom: 0;
         }
 
         .protocol-list li::before {
-            content: ">";
-            color: var(--pink);
-            margin-right: 10px;
+            content: "•";
+            color: var(--primary);
+            margin-right: 12px;
             font-weight: bold;
+            font-size: 18px;
+            line-height: 1.2;
         }
 
         .highlight {
-            color: var(--yellow);
+            color: var(--text-main);
+            font-weight: 800;
         }
 
-        /* Glitch Effect Keyframes */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .glitch-text {
-            position: relative;
-        }
-        .glitch-text::before, .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-        }
-        .glitch-text::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--pink);
-            clip: rect(24px, 550px, 90px, 0);
-            animation: glitch-anim-2 3s infinite linear alternate-reverse;
-        }
-        .glitch-text::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--cyan);
-            clip: rect(85px, 550px, 140px, 0);
-            animation: glitch-anim 2.5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(39px, 9999px, 71px, 0); }
-            20% { clip: rect(3px, 9999px, 83px, 0); }
-            40% { clip: rect(56px, 9999px, 16px, 0); }
-            60% { clip: rect(10px, 9999px, 89px, 0); }
-            80% { clip: rect(65px, 9999px, 12px, 0); }
-            100% { clip: rect(98px, 9999px, 54px, 0); }
-        }
-        @keyframes glitch-anim-2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); }
-            20% { clip: rect(12px, 9999px, 59px, 0); }
-            40% { clip: rect(87px, 9999px, 23px, 0); }
-            60% { clip: rect(43px, 9999px, 88px, 0); }
-            80% { clip: rect(9px, 9999px, 45px, 0); }
-            100% { clip: rect(76px, 9999px, 12px, 0); }
-        }
-
-        /* Responsive */
         @media (max-width: 600px) {
+            .glass-card { padding: 30px 20px; border-radius: 20px; }
             .title { font-size: 24px; }
             .timeline-box { flex-direction: column; align-items: flex-start; }
-            .timeline-label { margin-bottom: 5px; }
-            .cyber-btn { font-size: 14px; padding: 12px 15px; }
+            .timeline-label { margin-bottom: 8px; }
+            .clean-btn { font-size: 14px; padding: 15px 20px; }
+            .glass-card::before { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 15px; }
+            .header { text-align: left; }
         }
     </style>
 </head>
 <body>
 
-    <div class="cyber-card">
+    <div class="glass-card">
         
         <div class="header">
             <div class="alert-badge">THÔNG BÁO QUAN TRỌNG</div>
-            <h1 class="title glitch-text" data-text="KIỂM TRA 15 PHÚT LẦN 3">KIỂM TRA 15 PHÚT LẦN 3</h1>
-            <p style="color: var(--gray); margin-top: 5px;">ĐỐI TƯỢNG: HỌC SINH KHỐI 7, 8, 9</p>
+            <h1 class="title">KIỂM TRA 15 PHÚT LẦN 3</h1>
+            <p style="color: var(--text-muted); margin-top: 10px; font-weight: 600; font-size: 15px;">ĐỐI TƯỢNG: HỌC SINH KHỐI 7, 8, 9</p>
         </div>
 
         <div class="timeline-box">
-            <span class="timeline-label">THỜI GIAN //</span>
+            <span class="timeline-label">THỜI GIAN</span>
             <span class="timeline-value">19:00 - Thứ Bảy, 21/03/2026</span>
         </div>
 
         <div class="nodes-section">
             <h3 class="section-title">LINK LÀM BÀI [Chọn đúng lớp nhé]</h3>
-            <p style="font-size: 12px; margin-bottom: 15px; color: #888;">⚠️ Lưu ý: Các em nhớ click ĐÚNG link của khối mình để làm bài!</p>
+            <p style="font-size: 13px; margin-bottom: 20px; color: var(--danger); font-weight: 600; background: rgba(239, 68, 68, 0.08); padding: 12px 15px; border-radius: 8px; border-left: 3px solid var(--danger);">⚠️ Lưu ý: Các em nhớ click ĐÚNG link của khối mình để làm bài!</p>
             
             <div class="nodes-grid">
-                <a href="https://test3k7.vercel.app/" target="_blank" class="cyber-btn grade-7">
+                <a href="https://test3k7.vercel.app/" target="_blank" class="clean-btn grade-7">
                     <span>VÀO KIỂM TRA - KHỐI 7</span>
                     <span class="btn-icon">❯</span>
                 </a>
-                <a href="https://test3k8.vercel.app/" target="_blank" class="cyber-btn grade-8">
+                <a href="https://test3k8.vercel.app/" target="_blank" class="clean-btn grade-8">
                     <span>VÀO KIỂM TRA - KHỐI 8</span>
                     <span class="btn-icon">❯</span>
                 </a>
-                <a href="https://test3k9.vercel.app/" target="_blank" class="cyber-btn grade-9">
+                <a href="https://test3k9.vercel.app/" target="_blank" class="clean-btn grade-9">
                     <span>VÀO KIỂM TRA - KHỐI 9</span>
                     <span class="btn-icon">❯</span>
                 </a>
